@@ -1,0 +1,25 @@
+#Return Count of subsequence whose some is targetSum
+arr=[1,2,1]
+target=3
+rc=[0]
+ans=[]
+l=len(arr)
+def noOfSubsequence(temp,index,target):
+    if target==0:
+        ans.append(temp.copy())
+        rc[0]=rc[0]+1
+        return
+    if index==l or target<0:
+        return
+    if target==0:
+        ans.append(temp.copy())
+        rc[0]=rc[0]+1
+        return
+    temp.append(arr[index])
+    noOfSubsequence(temp,index+1,target-arr[index])
+    temp.pop()
+    noOfSubsequence(temp,index+1,target)
+noOfSubsequence([],0,3)
+print(rc[0])
+print(ans)
+    
